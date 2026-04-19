@@ -359,8 +359,13 @@ public class Calc_Cientifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jbntigualActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        entrada="";
+    if (entrada.length() > 1) {
+        entrada = entrada.substring(0, entrada.length() - 1);
         jtxtCantidad.setText(entrada);
+    } else {
+        entrada = "0";
+        jtxtCantidad.setText(entrada);
+    }
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jbntborradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbntborradorActionPerformed
@@ -447,10 +452,15 @@ public class Calc_Cientifica extends javax.swing.JFrame {
         //Limpiar la caja de texto
         //Capturar el signo
         //Envio en pantallalo que he capturado
-        numero1=Double.parseDouble(entrada);
-        entrada="";
-        operador="-";
+        if (entrada.equals("")) {
+        entrada = "-";
         jtxtCantidad.setText(entrada);
+        } else {
+        numero1 = Double.parseDouble(entrada);
+        entrada = "";
+        operador = "-";
+        jtxtCantidad.setText(entrada);
+        }
     }//GEN-LAST:event_jbntrestaActionPerformed
 
     private void jbnt5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnt5ActionPerformed
@@ -493,18 +503,17 @@ public class Calc_Cientifica extends javax.swing.JFrame {
         //Limpiar la caja de texto
         //Capturar el signo
         //Envio en pantallalo que he capturado
-    if (!entrada.equals("")) {
-        numero1 = Double.parseDouble(entrada);
+        if (!entrada.equals("")) {
+        double valor = Double.parseDouble(entrada);
 
-        if (numero1 >= 0) {
-            double resultado = Math.sqrt(numero1);
-            entrada = String.valueOf(resultado);
+        if (valor >= 0) {
+            valor = Math.sqrt(valor);
+            entrada = String.valueOf(valor);
             jtxtCantidad.setText(entrada);
         } else {
             jtxtCantidad.setText("Error");
         }
     }
-
     }//GEN-LAST:event_jbntraizActionPerformed
 
     private void jbnt9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnt9ActionPerformed
